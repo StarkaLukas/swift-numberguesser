@@ -16,21 +16,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaM-1Q-TGK">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="185.5" y="433" width="43" height="30"/>
+                                <state key="normal" title="Guess"/>
                                 <connections>
                                     <action selector="buttonClicked:" destination="ipn-3X-xCV" eventType="touchUpInside" id="7Og-mw-DRI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess a number between 1 and 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-X7-0th">
+                                <rect key="frame" x="74.5" y="298" width="265" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Enter a number first" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVY-el-Kyf">
+                                <rect key="frame" x="111" y="527" width="192" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z21-26-RTC">
+                                <rect key="frame" x="157" y="383" width="100" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="p4N-tH-Elc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="sVY-el-Kyf" firstAttribute="centerX" secondItem="8iK-Bk-PaQ" secondAttribute="centerX" id="1Dv-fx-N3x"/>
+                            <constraint firstItem="z21-26-RTC" firstAttribute="top" secondItem="D1C-X7-0th" secondAttribute="bottom" constant="64" id="1RD-Kz-Qcf"/>
+                            <constraint firstItem="D1C-X7-0th" firstAttribute="centerX" secondItem="8iK-Bk-PaQ" secondAttribute="centerX" id="2UR-mC-Fqn"/>
                             <constraint firstItem="VaM-1Q-TGK" firstAttribute="centerY" secondItem="8iK-Bk-PaQ" secondAttribute="centerY" id="4iJ-08-o6f"/>
+                            <constraint firstItem="VaM-1Q-TGK" firstAttribute="top" secondItem="z21-26-RTC" secondAttribute="bottom" constant="16" id="KI2-yj-9RY"/>
                             <constraint firstItem="VaM-1Q-TGK" firstAttribute="centerX" secondItem="8iK-Bk-PaQ" secondAttribute="centerX" id="Skl-Qu-sH7"/>
+                            <constraint firstItem="z21-26-RTC" firstAttribute="centerX" secondItem="8iK-Bk-PaQ" secondAttribute="centerX" id="c4J-cj-wkx"/>
+                            <constraint firstItem="sVY-el-Kyf" firstAttribute="top" secondItem="VaM-1Q-TGK" secondAttribute="bottom" constant="64" id="eFT-AX-KgC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cwa-OH-1Bk"/>
                     </view>
                     <connections>
+                        <outlet property="guessField" destination="z21-26-RTC" id="RQa-rx-BGC"/>
+                        <outlet property="hintField" destination="sVY-el-Kyf" id="EpW-zr-7FM"/>
                         <segue destination="VK4-DA-9pa" kind="show" identifier="wurst" id="2AY-2N-iPl"/>
                     </connections>
                 </viewController>

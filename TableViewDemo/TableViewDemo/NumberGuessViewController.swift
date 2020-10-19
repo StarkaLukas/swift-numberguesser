@@ -18,21 +18,37 @@ class NumberGuessViewController: UIViewController {
     
     var model = Model()
     
-    @IBAction func buttonClicked(_ sender: UIButton) {
-        model.guesses.append(5)
-        if (model.guesses.count >= 10) {
-           performSegue(withIdentifier: "wurst", sender: self)
-        }
-    }
+      
+    @IBOutlet weak var guessField: UITextField!
+    @IBOutlet weak var hintField: UILabel!
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        let guess = Int(guessField.text!)!
+        
+        print(model.randNumber)
+        
+        if(guess > 0 && guess <= 50) {
+            model.guesses.append(guess)
+            
+            if (guess == model.randNumber) {
+                performSegue(withIdentifier: "wurst", sender: self)
+            } else {
+                hintField.text = guess < model.randNumber ? "Hint: The number is higher than your guess" : "Hint: The number is lower than your guess"
+            }
+            
+            if (model.guesses.count >= 10) {
+               performSegue(withIdentifier: "wurst", sender: self)
+            }
+        } else {
+            hintField.text = "Hint: Your number must be between 1 and 50"
+        }
+        
+        
     }
-    */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = segue.destination as! TableViewController
+        
+        viewController.model = self.model
+    }
 }

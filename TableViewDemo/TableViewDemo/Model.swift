@@ -10,4 +10,5 @@ import Foundation
 
 class Model {
     var guesses = [Int]()
+    var randNumber = Int.random(in: 1...50)
 }

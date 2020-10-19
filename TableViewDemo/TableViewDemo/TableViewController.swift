@@ -10,13 +10,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var model = Model()
+    var model: Model?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.guesses.append(1)
-        model.guesses.append(2)
-        model.guesses.append(3)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,15 +30,17 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return model.guesses.count
+        return model?.guesses.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "person", for: indexPath)
+        
+        _ = model!
 
         // Configure the cell...
-        cell.textLabel?.text = "\(model.guesses[indexPath.row])"
+        cell.textLabel?.text = "\(model!.guesses[indexPath.row])"
 
         return cell
     }
